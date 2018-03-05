@@ -1,0 +1,32 @@
+<extend name="Public/edit" />
+<block name="content">
+<div class="detail">
+    <form id="edit_form" data-action="/admin/job/save" >
+        <input type="hidden" value="{$action}" name="action">
+        <input type="hidden" value="" name="id">
+    	<div class="detail-row">
+    		<div class="row-label">
+    			<span class="must">登录名:</span>
+    		</div>
+    		<div class="row-input">
+    			<input type="text" name="job_name" placeholder="请输入职位名" maxlength="12">
+    		</div>
+    	</div>
+        <div class="detail-row">
+            <div class="row-label">备注:</div>
+            <div class="row-input">
+                <textarea name="explain" placeholder="请输入备注"></textarea>
+            </div>
+        </div>
+    </form>
+</div>
+</block>
+<block name="js">
+<script type="text/javascript">
+const editObj = new edit();
+editObj.saveurl='/admin/job/edit/{id}/edit';
+<if condition="$action neq 'add'">
+editObj.setForm($("#edit_form"),<?=json_encode($data)?>);
+</if>
+</script>   
+</block>
