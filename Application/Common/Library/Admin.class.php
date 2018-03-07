@@ -29,6 +29,9 @@ class Admin{
     public function setFunc($func){
         $this->func=$func;
     }
+    public function getFunc($key){
+    	return $this->auth[$key];
+    }
 	public function save(){
 		session(SELF::SESSION_SAVE_KEY,serialize($this));
 	}

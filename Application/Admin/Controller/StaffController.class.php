@@ -1,9 +1,9 @@
 <?php
 namespace Admin\Controller;
 use Admin\Model\staffModel;
-use Common\Library\FormChech;
 use Admin\Model\jobModel;
 class StaffController extends CommonController{
+	private $key='staff';
 	private $rule=[
 		'staff_form'=>[
 			'login_name'=>['name'=>'login_name','preg'=>'/^[\w|_]{4,}$/','notice'=>'请输入正确的登录名!'],
@@ -14,6 +14,7 @@ class StaffController extends CommonController{
 	];
 	public function index(){
 		$data['title']='后台管理员管理';
+		$data['key']=$this->admin->getFunc($this->key);
 		$this->assign($data);
 		return $this->display();
 	}

@@ -16,7 +16,9 @@
 <div class="head container-fluid">
 	<div class="row">
 		<span class="title"><?php echo ($title); ?></span>			
+	    <?php if( in_array('add',$key['auth_key']) ): ?>
 		<button type="button"  class="btn btn-success btn-right" onclick="parent.adminObj.openNewTab('/admin/menu/add/0','添加菜单')" >添加</button>
+		<?php endif; ?>
 	</div>	
 </div>
 <div class="content container-fluid">
@@ -50,9 +52,15 @@
 	<div class="table-td"><%= sort %></div>
 	<div class="table-td">
 		<a href="javascript:parent.adminObj.openNewTab('/admin/menu/edit/<%=id%>/browse','查看菜单');" class="list-btn browse"></a>
+	    <?php if( in_array('edit',$key['auth_key']) ): ?>
     	<a href="javascript:parent.adminObj.openNewTab('/admin/menu/edit/<%=id%>/edit','编辑菜单');" class="list-btn edit" ></a>
+    	<?php endif; ?>
+	    <?php if( in_array('delete',$key['auth_key']) ): ?>
     	<a href="javascript:parent.adminObj.deleteData('/admin/menu/deleteMenu/<%=id%>');" class="list-btn del" ></a>
+    	<?php endif; ?>
+	    <?php if( in_array('add',$key['auth_key']) ): ?>
     	<a href="javascript:parent.adminObj.openNewTab('/admin/menu/add?pid=<%=id%>','添加子菜单');" class="list-text" >子菜单</a>
+    	<?php endif; ?>
 	</div>
 </div>	
 </script>

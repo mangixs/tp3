@@ -14,7 +14,9 @@
 <div class="head container-fluid">
 	<div class="row">
 		<span class="title"><?php echo ($title); ?></span>			
+	    <?php if( in_array('add',$key['auth_key']) ): ?>
 		<button type="button"  class="btn btn-success btn-right" onclick="parent.adminObj.openNewTab('/admin/staff/add','添加管理员')">添加</button>
+		<?php endif;?>
 	</div>	
 </div>
 <div class="content container-fluid">
@@ -51,9 +53,15 @@
 	    <td><%= true_name %></td>
 	    <td>
 	    	<a href="javascript:parent.adminObj.openNewTab('/admin/staff/edit/<%=id%>/browse','查看');" class="list-btn browse"></a>
+	    	<?php if( in_array('edit',$key['auth_key']) ): ?>
 	    	<a href="javascript:parent.adminObj.openNewTab('/admin/staff/edit/<%=id%>/edit','编辑管理员');" class="list-btn edit" ></a>
+	    	<?php endif; ?>
+	    	<?php if( in_array('delete',$key['auth_key']) ): ?>
 	    	<a href="javascript:parent.adminObj.deleteData('/admin/staff/deleteStaff/<%=id%>');" class="list-btn del" ></a>
+	    	<?php endif; ?>
+	    	<?php if( in_array('edit',$key['auth_key']) ): ?>
 	    	<a href="javascript:parent.adminObj.openNewTab('/admin/staff/setJob/<%=id%>','设置职位');" class="list-text" >职位</a>
+	    	<?php endif; ?>
 	    </td>
 	</tr>	
 	</script>	

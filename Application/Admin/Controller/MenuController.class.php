@@ -3,6 +3,7 @@ namespace Admin\Controller;
 use Admin\Model\MenuModel;
 use Common\Library\FormCheck;
 class MenuController extends CommonController{
+	private $key='menu';
 	private $rule=[
 		'menu_form'=>[
 			'named'=>['name'=>'named','preg'=>':notnull','notice'=>'请输入名称'],
@@ -15,6 +16,7 @@ class MenuController extends CommonController{
 	];
 	public function index(){
 		$data['title']='菜单管理';
+		$data['key']=$this->admin->getFunc($this->key);
 		$this->assign($data);
 		return $this->display();
 	}

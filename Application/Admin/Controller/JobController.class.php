@@ -2,8 +2,10 @@
 namespace Admin\Controller;
 use Admin\model\jobModel;
 class JobController extends CommonController{
+	private $key='job';
 	public function index(){
 		$data['title']='职位管理';
+		$data['key']=$this->admin->getFunc($this->key);
 		$this->assign($data);
 		return $this->display();
 	}

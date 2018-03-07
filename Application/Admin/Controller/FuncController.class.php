@@ -2,8 +2,10 @@
 namespace Admin\Controller;
 use Admin\Model\funcModel;
 class FuncController extends CommonController{
+	private $key='func';
 	public function index(){
 		$data['title']='功能管理';
+		$data['key']=$this->admin->getFunc($this->key);
 		$this->assign($data);
 		return $this->display();
 	}

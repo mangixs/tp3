@@ -65,14 +65,20 @@
 </head>
 <body>
 <div class="box">
-	<?php if(is_array($data)): $i = 0; $__LIST__ = $data;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$v): $mod = ($i % 2 );++$i;?><div class="row">
+	<?php foreach($data as $v):?>
+		<div class="row">
 			<div class="label">
-				<input type="checkbox" class="job" value="<?php echo ($v["id"]); ?>" <?php if(in_array($v.id,$has)): ?>checked="checked"<?php endif; ?> >
+				<input type="checkbox" class="job" value="<?=$v['id']?>"
+				<?php if( in_array($v['id'],$has) ) :?>
+					checked="checked" 
+				<?php endif;?>
+				>
 			</div>
 			<div class="content">
-				<span><?php echo ($v["job_name"]); ?></span>
+				<span><?=$v['job_name']?></span>
 			</div>
-		</div><?php endforeach; endif; else: echo "" ;endif; ?>
+		</div>
+	<?php endforeach;?>
 </div>	
 </body>
 </html>

@@ -65,16 +65,20 @@
 </head>
 <body>
 <div class="box">
-	<volist name="data" id="v">
+	<?php foreach($data as $v):?>
 		<div class="row">
 			<div class="label">
-				<input type="checkbox" class="job" value="{$v.id}" <if condition="in_array($v.id,$has)" > checked="checked" </if> >
+				<input type="checkbox" class="job" value="<?=$v['id']?>"
+				<?php if( in_array($v['id'],$has) ) :?>
+					checked="checked" 
+				<?php endif;?>
+				>
 			</div>
 			<div class="content">
-				<span>{$v.job_name}</span>
+				<span><?=$v['job_name']?></span>
 			</div>
 		</div>
-	</volist>
+	<?php endforeach;?>
 </div>	
 </body>
 </html>
